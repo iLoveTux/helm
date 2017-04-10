@@ -2,9 +2,9 @@
 Plugemin
 ********
 
-.. image:: https://travis-ci.org/iLoveTux/unitils.svg?branch=master
+.. image:: https://travis-ci.org/iLoveTux/plugemin.svg?branch=master
     :alt: Travis-CI Build Status (for Linux)
-    :target: https://travis-ci.org/iLoveTux/unitils
+    :target: https://travis-ci.org/iLoveTux/plugemin
 
 plugemin
 ========
