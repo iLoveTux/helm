@@ -6,6 +6,11 @@ Plugemin
     :alt: Travis-CI Build Status (for Linux)
     :target: https://travis-ci.org/iLoveTux/plugemin
 
+.. image:: https://readthedocs.org/projects/plugemin/badge/?version=latest
+    :alt: Documentation Status
+    :target: http://plugemin.readthedocs.io/en/latest/index.html
+
+https://readthedocs.org/projects/plugemin/badge/?version=latest
 plugemin
 ========
 
