@@ -6,23 +6,23 @@ if sys.version_info < (3,0):
     tests_require = ["nose>=1.0", "mock"]
 
 setup(
-    name="helm",
+    name="plugemin",
     version="0.1.0",
     author="iovetux",
     author_email="me@ilovetux.com",
     description="A template as a service utility...you know, for DevOps",
     license="GPLv3",
     keywords="template reports",
-    url="http://github.com/ilovetux/helm",
-    packages=['helm'],
-    install_requires=["colorama", "jinja2"],
+    url="http://github.com/ilovetux/plugemin",
+    packages=['plugemin'],
+    install_requires=["jinja2"],
     entry_points={
         "console_scripts": [
-            "helm=helm.cli:main",
+            "plugemin=plugemin.cli:main",
         ],
-        "helm.InputPlugin": [
-            "CsvInput=helm:CsvInput",
-            "JsonInput=helm:JsonInput",
+        "plugemin.InputPlugin": [
+            "CsvInput=plugemin:CsvInput",
+            "JsonInput=plugemin:JsonInput",
         ]
     },
     test_suite="nose.collector",

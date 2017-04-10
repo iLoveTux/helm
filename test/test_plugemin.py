@@ -1,6 +1,6 @@
 import os
 import io
-import helm
+import plugemin
 import unittest
 
 try:
@@ -44,16 +44,16 @@ def join_with_expanduser(path):
     return os.path.abspath(os.path.expanduser(os.path.join(*path)))
 
 
-class TestHelm(unittest.TestCase):
-    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", helm.CsvInput), Loader("JsonInput", helm.JsonInput)])
-    def test_helm_template(self, mock_entrypoints):
-        """helm should take a series of structured data
+class TestPlugemin(unittest.TestCase):
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput)])
+    def test_plugemin_template(self, mock_entrypoints):
+        """plugemin should take a series of structured data
         and render templates based on each item in the input.
 
         By default, the template is rendered as a jinja2 template
         and we accept csv
         """
-        results = list(helm.render(template, csv))
+        results = list(plugemin.render(template, csv))
         expected = [
             """Hello alice, \nI understand that you are a female of 23 years of age.""",
             """Hello bob, \nI understand that you are a male of 32 years of age.""",
@@ -61,41 +61,41 @@ class TestHelm(unittest.TestCase):
         self.assertEqual(expected, results)
 
     @mock.patch("os.path.isdir", return_value=False)
-    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", helm.CsvInput), Loader("JsonInput", helm.JsonInput)])
-    def test_helm_template_search_path(self, mock_entrypoints, mock_isdir):
-        results = list(helm.render(template, csv))
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput)])
+    def test_plugemin_template_search_path(self, mock_entrypoints, mock_isdir):
+        results = list(plugemin.render(template, csv))
         calls = [
-            mock.call(join_with_expanduser(["/", "helm", "templates"])),
-            mock.call(join_with_expanduser(["~", "helm", "templates"])),
-            mock.call(join_with_expanduser([".", "helm", "templates"])),
+            mock.call(join_with_expanduser(["/", "plugemin", "templates"])),
+            mock.call(join_with_expanduser(["~", "plugemin", "templates"])),
+            mock.call(join_with_expanduser([".", "plugemin", "templates"])),
         ]
         mock_isdir.assert_has_calls(calls)
 
 
 class TestInputPlugins(unittest.TestCase):
 
-    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", helm.CsvInput), Loader("JsonInput", helm.JsonInput)])
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput)])
     def test_CsvInput_plugin(self, mock_entrypoints):
         """an input plugin is designed to take an iterator and
         yield dicts based on each item yielded.
         """
-        results = list(helm.render(template, csv, input_plugin="CsvInput"))
+        results = list(plugemin.render(template, csv, input_plugin="CsvInput"))
         expected = [
             """Hello alice, \nI understand that you are a female of 23 years of age.""",
             """Hello bob, \nI understand that you are a male of 32 years of age.""",
         ]
         self.assertEqual(expected, results)
 
-    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", helm.CsvInput), Loader("JsonInput", helm.JsonInput)])
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput)])
     def test_JsonInput_plugin(self, mock_entrypoints):
-        results = list(helm.render(template, json, input_plugin="JsonInput"))
+        results = list(plugemin.render(template, json, input_plugin="JsonInput"))
         expected = [
             """Hello alice, \nI understand that you are a female of 23 years of age.""",
             """Hello bob, \nI understand that you are a male of 32 years of age.""",
         ]
         self.assertEqual(expected, results)
 
-    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", helm.CsvInput)])
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput)])
     def test_find_plugins_calls_pkgutils_iter_entry_points(self, mock_entrypoints):
         with self.assertRaises(KeyError):
-            results = list(helm.render(template, json, input_plugin="JsonInput"))
+            results = list(plugemin.render(template, json, input_plugin="JsonInput"))

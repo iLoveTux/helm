@@ -1,6 +1,6 @@
 import argparse
 import sys
-from .helm import render
+from .plugemin import render
 
 __all__ = [
     "main",
@@ -18,7 +18,7 @@ def parse_args(argv):
 
 
 def main(argv=None):
-    """A command line interface to helm. This can be used independently
+    """A command line interface to plugemin. This can be used independently
     of the Python API.
     """
     argv = sys.argv[1:] if argv is None else argv

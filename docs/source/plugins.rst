@@ -2,10 +2,10 @@
 plugins
 *******
 
-This document will describe how to use and create plugins for helm.
+This document will describe how to use and create plugins for plugemin.
 
-Helm plugins are used to parse input data. The following are the plugins
-which come bundled with helm by default:
+plugemin plugins are used to parse input data. The following are the plugins
+which come bundled with plugemin by default:
 
 * CsvInput
 * JsonInput
@@ -59,7 +59,7 @@ We will make a plugin which takes lines of three space delimited values
 representing name, age and gender. We will then make two templates one which
 outputs a html page describing each person and another which outputs a friendly
 letter to each person. This demo is supposed to showcase some of the more useful
-features of helm and to help you get started using it.
+features of plugemin and to help you get started using it.
 
 Please consider the following directory structure::
 
@@ -88,7 +88,7 @@ custom data type and use the data to fill in the blanks on some templates.
 *Note*: You would probably in real-world use, perform some error handling and
 validation. It would probably help to also define a couple of custom exceptions.
 
-Next, we need to make a setup.py which will register our plugin with helm
+Next, we need to make a setup.py which will register our plugin with plugemin
 (the important piece is in the entry_points)::
 
     import sys
@@ -99,18 +99,18 @@ Next, we need to make a setup.py which will register our plugin with helm
         tests_require = ["nose>=1.0", "mock"]
 
     setup(
-        name="helm-CustomPlugin",
+        name="plugemin-CustomPlugin",
         version="0.1.0",
         author="anon",
         author_email="anon@email.com",
-        description="A helm plugin for parsing my custom data type",
+        description="A plugemin plugin for parsing my custom data type",
         license="GPLv3",
         keywords="template reports",
-        url="http://github.com/anon/helm-CustomPlugin",
+        url="http://github.com/anon/plugemin-CustomPlugin",
         packages=['custom_input'],
-        install_requires=["helm"],
+        install_requires=["plugemin"],
         entry_points={
-            "helm.InputPlugin": [
+            "plugemin.InputPlugin": [
                 "CustomInput=custom_plugin:CustomInput",
             ]
         },
@@ -142,7 +142,7 @@ Please consider the html template below, we will call this
 
 Now, please consider the output of the following command::
 
-    $ helm -t profile.html.j2 -d data.txt
+    $ plugemin -t profile.html.j2 -d data.txt
 
     <div class="person" id="person-alice">
         <h1>alice</h1>
@@ -170,7 +170,7 @@ Please consider ``hello-letter.j2``::
 
 Now consider the following command::
 
-  $ helm -t hello-letter.j2 -d data.txt
+  $ plugemin -t hello-letter.j2 -d data.txt
 
   Dear alice:
 

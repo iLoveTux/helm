@@ -22,7 +22,7 @@ def find_input_plugins():
     :rtype: dict
     """
     plugins = {}
-    for plugin in pkg_resources.iter_entry_points("helm.InputPlugin"):
+    for plugin in pkg_resources.iter_entry_points("plugemin.InputPlugin"):
         plugins[plugin.name] = plugin.load()
     return plugins
 
@@ -30,17 +30,17 @@ def find_templates():
     """Finds all available templates, returns a dict with the filename
     as the keys pointing to the file contents.
 
-    Looks in ``/helm/templates``, ``~/helm/templates`` and
-    ``./helm/templates``
+    Looks in ``/plugemin/templates``, ``~/plugemin/templates`` and
+    ``./plugemin/templates``
 
     :returns: A dict containing all available templates
     :rtype: dict
     """
     _templates = {}
     paths = [
-        _join_with_expanduser(["/", "helm", "templates"]),
-        _join_with_expanduser(["~", "helm", "templates"]),
-        _join_with_expanduser([".", "helm", "templates"]),
+        _join_with_expanduser(["/", "plugemin", "templates"]),
+        _join_with_expanduser(["~", "plugemin", "templates"]),
+        _join_with_expanduser([".", "plugemin", "templates"]),
     ]
     for path in paths:
         if os.path.isdir(path):

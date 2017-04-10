@@ -4,7 +4,7 @@ import os
 
 class JsonInput(object):
     def __init__(self, data):
-        """JsonInput os a helm plugin which parses json and
+        """JsonInput os a plugemin plugin which parses json and
         yields dicts.
 
         :param data: An iterator yielding JSON documents, or a filename containing a JSON document per line
@@ -27,7 +27,7 @@ class JsonInput(object):
 
 class CsvInput(object):
     def __init__(self, data):
-        """JsonInput os a helm plugin which parses json and
+        """JsonInput os a plugemin plugin which parses json and
         yields dicts.
 
         :param data: An iterator yielding CSV documents, or a filename containing CSV

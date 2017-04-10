@@ -2,5 +2,5 @@
 API
 ***
 
-.. automodule:: helm
+.. automodule:: plugemin
    :members:
