@@ -112,7 +112,7 @@ Contributing
 ============
 
 Please read
-`CONTRIBUTING.md <https://github.com/ilovetux/plugemin/contributing.rst>`_
+`CONTRIBUTING.rst <https://github.com/iLoveTux/plugemin/blob/master/contributing.rst>`_
 for details on our code of conduct, and the process for submitting pull
 requests to us.
 
@@ -129,14 +129,14 @@ Authors
 * `iLoveTux <https://github.com/ilovetux>`_
 
 See also the list of
-`contributors <https://github.com/ilovetux/plugemin/contributors>`_
+`contributors <https://github.com/iLoveTux/plugemin/blob/master/contributors>`_
 who participated in this project.
 
 License
 =======
 
 This project is licensed under the GPL Version 3 or later, please see
-the `LICENSE <https://github.com/iLoveTux/plugemin/LICENSE>`_
+the `LICENSE <https://github.com/iLoveTux/plugemin/blob/master/LICENSE>`_
 file for details
 
 Acknowledgments
