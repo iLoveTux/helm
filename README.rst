@@ -112,7 +112,7 @@ Contributing
 ============
 
 Please read
-`CONTRIBUTING.md <https://gist.github.com/PurpleBooth/b24679402957c63ec426>`_
+`CONTRIBUTING.md <https://github.com/ilovetux/plugemin/contributing.rst>`_
 for details on our code of conduct, and the process for submitting pull
 requests to us.
 
@@ -126,7 +126,7 @@ available, see the
 Authors
 =======
 
-* `iLoveTux <https://github.com/ilovetux>`
+* `iLoveTux <https://github.com/ilovetux>`_
 
 See also the list of
 `contributors <https://github.com/ilovetux/plugemin/contributors>`_
@@ -136,7 +136,8 @@ License
 =======
 
 This project is licensed under the GPL Version 3 or later, please see
-the `LICENSE <LICENSE>`_ file for details
+the `LICENSE <https://github.com/iLoveTux/plugemin/LICENSE>`_
+file for details
 
 Acknowledgments
 ===============
