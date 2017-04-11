@@ -15,7 +15,7 @@ setup(
     keywords="template reports",
     url="http://github.com/ilovetux/plugemin",
     packages=['plugemin'],
-    install_requires=["jinja2"],
+    install_requires=["jinja2", "lxml"],
     entry_points={
         "console_scripts": [
             "plugemin=plugemin.cli:main",
