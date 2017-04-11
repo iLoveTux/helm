@@ -69,7 +69,7 @@ commands:
 
 
 That's it, the tests should pass, if they don't please open an
-`issue <https://github.com/ilovetux/plugemin>`_ and be sure to include:
+`issue <https://github.com/ilovetux/plugemin/issues>`_ and be sure to include:
 
 * The commands you ran to get your results
 * The versions of Python, lxml and jinja2 you have installed
