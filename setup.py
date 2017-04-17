@@ -7,7 +7,7 @@ if sys.version_info < (3,0):
 
 setup(
     name="plugemin",
-    version="0.1.0",
+    version="0.1.1",
     author="iovetux",
     author_email="me@ilovetux.com",
     description="A template as a service utility...you know, for DevOps",
