@@ -36,6 +36,19 @@ json = [
     "gender": "male"
 }"""]
 
+xml = [
+"""<root>
+    <name>alice</name>
+    <age>23</age>
+    <gender>female</gender>
+</root>""",
+"""<root>
+    <name>bob</name>
+    <age>32</age>
+    <gender>male</gender>
+</root>""",
+]
+
 template = """Hello {{name}}, \nI understand that you are a {{gender}} of {{age}} years of age."""
 
 inmem_file = io.StringIO()
@@ -89,6 +102,15 @@ class TestInputPlugins(unittest.TestCase):
     @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput)])
     def test_JsonInput_plugin(self, mock_entrypoints):
         results = list(plugemin.render(template, json, input_plugin="JsonInput"))
+        expected = [
+            """Hello alice, \nI understand that you are a female of 23 years of age.""",
+            """Hello bob, \nI understand that you are a male of 32 years of age.""",
+        ]
+        self.assertEqual(expected, results)
+
+    @mock.patch("pkg_resources.iter_entry_points", return_value=[Loader("CsvInput", plugemin.CsvInput), Loader("JsonInput", plugemin.JsonInput), Loader("XmlInput", plugemin.XmlInput)])
+    def test_XmlInput_plugin(self, mock_entrypoints):
+        results = list(plugemin.render(template, xml, input_plugin="XmlInput"))
         expected = [
             """Hello alice, \nI understand that you are a female of 23 years of age.""",
             """Hello bob, \nI understand that you are a male of 32 years of age.""",
